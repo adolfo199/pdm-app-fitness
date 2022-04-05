@@ -3,6 +3,29 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Users/Kevin/AndroidStudioProjects/pdm-app-fitness/fitness_app/app/src/main/res/drawable/ic_chef.xml" value="0.18" />
+        <entry key="..\:/Users/Kevin/AndroidStudioProjects/pdm-app-fitness/fitness_app/app/src/main/res/drawable/ic_chef_icon.xml" value="0.2365" />
+        <entry key="..\:/Users/Kevin/AndroidStudioProjects/pdm-app-fitness/fitness_app/app/src/main/res/drawable/ic_dashboard_black_24dp.xml" value="0.272" />
+        <entry key="..\:/Users/Kevin/AndroidStudioProjects/pdm-app-fitness/fitness_app/app/src/main/res/drawable/ic_ejercicios.xml" value="0.272" />
+        <entry key="..\:/Users/Kevin/AndroidStudioProjects/pdm-app-fitness/fitness_app/app/src/main/res/drawable/ic_favorite.xml" value="0.272" />
+        <entry key="..\:/Users/Kevin/AndroidStudioProjects/pdm-app-fitness/fitness_app/app/src/main/res/drawable/ic_favorite_selected.xml" value="0.272" />
+        <entry key="..\:/Users/Kevin/AndroidStudioProjects/pdm-app-fitness/fitness_app/app/src/main/res/drawable/ic_home_black_24dp.xml" value="0.272" />
+        <entry key="..\:/Users/Kevin/AndroidStudioProjects/pdm-app-fitness/fitness_app/app/src/main/res/drawable/ic_launcher_background.xml" value="0.272" />
+        <entry key="..\:/Users/Kevin/AndroidStudioProjects/pdm-app-fitness/fitness_app/app/src/main/res/drawable/ic_muscle_exercise.xml" value="0.272" />
+        <entry key="..\:/Users/Kevin/AndroidStudioProjects/pdm-app-fitness/fitness_app/app/src/main/res/drawable/ic_recetas.xml" value="0.2365" />
+        <entry key="..\:/Users/Kevin/AndroidStudioProjects/pdm-app-fitness/fitness_app/app/src/main/res/drawable/ic_vector.xml" value="0.272" />
+        <entry key="..\:/Users/Kevin/AndroidStudioProjects/pdm-app-fitness/fitness_app/app/src/main/res/drawable/shadowneffect.xml" value="0.196" />
+        <entry key="..\:/Users/Kevin/AndroidStudioProjects/pdm-app-fitness/fitness_app/app/src/main/res/layout/activity_main.xml" value="0.33" />
+        <entry key="..\:/Users/Kevin/AndroidStudioProjects/pdm-app-fitness/fitness_app/app/src/main/res/layout/fragment_dashboard.xml" value="0.14722222222222223" />
+        <entry key="..\:/Users/Kevin/AndroidStudioProjects/pdm-app-fitness/fitness_app/app/src/main/res/layout/fragment_home.xml" value="0.358695652173913" />
+        <entry key="..\:/Users/Kevin/AndroidStudioProjects/pdm-app-fitness/fitness_app/app/src/main/res/layout/fragment_notifications.xml" value="0.358695652173913" />
+        <entry key="..\:/Users/Kevin/AndroidStudioProjects/pdm-app-fitness/fitness_app/app/src/main/res/layout/item_categorias.xml" value="0.358695652173913" />
+        <entry key="..\:/Users/Kevin/AndroidStudioProjects/pdm-app-fitness/fitness_app/app/src/main/res/layout/item_recetas.xml" value="0.358695652173913" />
+        <entry key="..\:/Users/Kevin/AndroidStudioProjects/pdm-app-fitness/fitness_app/app/src/main/res/layout/recetas_fragment.xml" value="0.33" />
+        <entry key="..\:/Users/Kevin/AndroidStudioProjects/pdm-app-fitness/fitness_app/app/src/main/res/layout/recipes_fragmant.xml" value="0.358695652173913" />
+        <entry key="..\:/Users/Kevin/AndroidStudioProjects/pdm-app-fitness/fitness_app/app/src/main/res/layout/recipes_fragment.xml" value="0.358695652173913" />
+        <entry key="..\:/Users/Kevin/AndroidStudioProjects/pdm-app-fitness/fitness_app/app/src/main/res/layout/recycler_row_item.xml" value="0.358695652173913" />
+        <entry key="..\:/Users/Kevin/AndroidStudioProjects/pdm-app-fitness/fitness_app/app/src/main/res/menu/bottom_nav_menu.xml" value="0.36666666666666664" />
         <entry key="..\:/Users/redua/Desktop/CICLO 01 22/PDM115/fitness_app/app/src/main/res/layout/fragment_home.xml" value="0.1" />
         <entry key="..\:/Users/redua/Desktop/CICLO 01 22/PDM115/fitness_app/app/src/main/res/layout/fragment_notifications.xml" value="0.1" />
         <entry key="..\:/Users/redua/Desktop/CICLO 01 22/PDM115/fitness_app/app/src/main/res/menu/bottom_nav_menu.xml" value="0.1" />
