@@ -1,6 +1,7 @@
 package com.example.fitness_app.ui.recetas
 
 import android.content.Context
+import android.content.Intent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -8,6 +9,7 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.appcompat.view.menu.ActionMenuItemView
 import androidx.core.content.ContextCompat
+import androidx.core.content.ContextCompat.startActivity
 import androidx.recyclerview.widget.RecyclerView
 import com.example.fitness_app.R
 
@@ -52,6 +54,13 @@ class RecyclerViewRecetasAdapter(private val context: Context, private var recet
                 holder.favorito = true
                 recetas[position].favorita = holder.favorito!!
             }
+
+        }
+
+        holder.imageReceta!!.setOnClickListener {
+            val intent = Intent(context, RecetaActivity::class.java)
+            intent.putExtra("receta", recetas[position])
+            startActivity(context, intent,null)
 
         }
 
