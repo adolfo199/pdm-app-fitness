@@ -2,13 +2,9 @@
 <menu xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:android="http://schemas.android.com/apk/res/android">
 
-    <item
-        android:id="@+id/navigation_home"
-        android:icon="@drawable/ic_home_black_24dp"
-        android:title="@string/title_inicio" />
 
     <item
-        android:id="@+id/navigation_dashboard"
+        android:id="@+id/nav_ejercicios"
         android:icon="@drawable/ic_ejercicios"
         android:title="@string/title_ejercicios"/>
 
