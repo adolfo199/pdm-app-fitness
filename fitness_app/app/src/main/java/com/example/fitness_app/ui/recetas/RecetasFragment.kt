@@ -16,6 +16,16 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.fitness_app.MainActivity
 import com.example.fitness_app.R
 import com.example.fitness_app.databinding.RecetasFragmentBinding
+import com.example.fitness_app.ui.recetas.Ingredientes.Companion.ingredientesEnsaladaDeHuevo
+import com.example.fitness_app.ui.recetas.Ingredientes.Companion.ingredientesLomitoDeResRelleno
+import com.example.fitness_app.ui.recetas.Ingredientes.Companion.ingredientesPancakesDeMazana
+import com.example.fitness_app.ui.recetas.Ingredientes.Companion.ingredientesPolloAlHornoConPatatas
+import com.example.fitness_app.ui.recetas.Ingredientes.Companion.ingredientesYogurtConFrutas
+import com.example.fitness_app.ui.recetas.Intrucciones.Companion.instruccionesEnsalada
+import com.example.fitness_app.ui.recetas.Intrucciones.Companion.instruccionesPancakesDeManzana
+import com.example.fitness_app.ui.recetas.Intrucciones.Companion.instruccionesPolloAlHornoConPatatas
+import com.example.fitness_app.ui.recetas.Intrucciones.Companion.instruccionesYogurtConFrutas
+import com.example.fitness_app.ui.recetas.Intrucciones.Companion.intruccionesLomitoDeResRelleno
 
 class RecetasFragment : Fragment() {
 
@@ -44,14 +54,21 @@ class RecetasFragment : Fragment() {
         _binding = RecetasFragmentBinding.inflate(inflater, container, false)
         val root: View = binding.root
 
-        var recetas : MutableList<Recetas> = ArrayList()
-        recetas.add(Recetas("Ensalada de huevo y aguacate", R.drawable.ensaladadehuevo,false))
-        recetas.add(Recetas("lasana vegetariana", R.drawable.lasana_vegetariana,true))
-        recetas.add(Recetas("Tarta de hojaldre con frutas", R.drawable.postre_tarta,true))
-        recetas.add(Recetas("Pollo Glaseado con espinacas", R.drawable.pollo_glaseado,false))
-        recetas.add(Recetas("Filetes de cerdo glaseados", R.drawable.filete_cerdo,false))
-        recetas.add(Recetas("Fritata de chapinones", R.drawable.fritata_desayuno, false))
-        recetas.add(Recetas("Ensalada de Camarones", R.drawable.ensalada_camarones, false))
+        //data temporal
+        var recetas = listOf<Recetas>(
+            Recetas("Ensaladada de huevo y aguacate", R.drawable.ensaladadehuevo,
+                "45 min", "6", "240" , ingredientesEnsaladaDeHuevo,
+                instruccionesEnsalada, false),
+            Recetas("Yogurt con frutas", R.drawable.yogurt_con_frutas, "3 min",
+            "2","213", ingredientesYogurtConFrutas, instruccionesYogurtConFrutas, false),
+            Recetas("Pancakes de Manzana", R.drawable.pancakes_de_manzana, "70 min",
+            "4","186", ingredientesPancakesDeMazana, instruccionesPancakesDeManzana, false),
+            Recetas("Pollo al horno con patatas", R.drawable.pollo_al_horno_con_patatas,
+            "70 min", "4","210", ingredientesPolloAlHornoConPatatas,
+            instruccionesPolloAlHornoConPatatas, false),
+            Recetas("Lomito de res relleno", R.drawable.lomito_de_res, "55 min",
+            "4","386", ingredientesLomitoDeResRelleno , intruccionesLomitoDeResRelleno ,false)
+        )
 
         val categorias : MutableList<Categorias> = ArrayList()
         categorias.add(Categorias("Ensaladas", R.drawable.ensaladadehuevo))
@@ -60,11 +77,12 @@ class RecetasFragment : Fragment() {
         categorias.add(Categorias("Carnes y aves", R.drawable.pollo_glaseado))
         categorias.add(Categorias("Mariscos", R.drawable.ensalada_camarones))
         categorias.add(Categorias("Desayunos", R.drawable.fritata_desayuno))
+
         setRecetas(recetas)
         setCategorias(categorias)
 
 
-        (activity as AppCompatActivity).supportActionBar?.title = getString(R.string.title_recetas)
+        //(activity as AppCompatActivity).supportActionBar?.title = getString(R.string.title_recetas)
 
 
 

@@ -52,4 +52,10 @@ dependencies {
 
     //shadown imageView
 
+    //animaciones
+    implementation 'com.airbnb.android:lottie:5.0.3'
+
+    //progresbar
+    implementation 'com.mikhaellopez:circularprogressbar:3.1.0'
+
 }
