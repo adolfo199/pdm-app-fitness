@@ -11,17 +11,21 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Fitness_app">
         <activity
+            android:name=".ui.recetas.CategoriasActivity"
+            android:exported="false"
+            android:theme="@style/ToolbarTheme" />
+        <activity
             android:name=".ui.ejercicios.EjercicioActivity"
-            android:parentActivityName=".MainActivity"
-            android:exported="false" />
+            android:exported="false"
+            android:parentActivityName=".MainActivity" />
         <activity
             android:name=".ui.ejercicios.FinishActivity"
-            android:parentActivityName=".MainActivity"
-            android:exported="false" />
+            android:exported="false"
+            android:parentActivityName=".MainActivity" />
         <activity
             android:name=".ui.ejercicios.RutinaActivity"
-            android:parentActivityName=".MainActivity"
             android:exported="false"
+            android:parentActivityName=".MainActivity"
             android:theme="@style/ejercicicioNoacitionbar" />
         <activity
             android:name=".ui.recetas.RecetaActivity"
