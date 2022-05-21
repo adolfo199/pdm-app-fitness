@@ -4,6 +4,7 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.Looper
+import android.view.View
 import android.widget.Toast
 import androidx.lifecycle.Observer
 import com.example.fitness_app.MainActivity
@@ -23,6 +24,7 @@ class LoginActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityLoginBinding.inflate(layoutInflater)
         setContentView(binding.root)
+        binding.txtError.visibility = View.GONE
 
 
         val database = AppDatabase.getDatabase(this)
@@ -42,24 +44,30 @@ class LoginActivity : AppCompatActivity() {
             }else{
                 val prefs = Prefs(this)
                 try {
-            CoroutineScope(Dispatchers.IO).launch {
+                    var login:Boolean = false
+                    CoroutineScope(Dispatchers.IO).launch {
+                        login = database.user().LoginUser(email, pass)
+                        if (login) {
+                            startActivity(Intent(this@LoginActivity, MainActivity::class.java))
+                            prefs.saveId(database.user().getId(email, pass))
+                            this@LoginActivity.finish()
 
-                    if (database.user().LoginUser(email, pass)) {
-                        startActivity(Intent(this@LoginActivity, MainActivity::class.java))
-                        prefs.saveId(database.user().getId(email, pass))
-                        this@LoginActivity.finish()
-
+                        }
                     }
-            }
-
-
-
+                    if (!login){
+                        binding.txtError.visibility = View.VISIBLE
+                    }
                 }catch (e:Exception){
-                    binding.edPass.setError("Inserte su contraseña")
 
                 }
 
 
+            }
+            binding.edEmail.setOnClickListener{
+                binding.txtError.visibility = View.GONE
+            }
+            binding.edPass.setOnClickListener {
+                binding.txtError.visibility = View.GONE
             }
 
 
