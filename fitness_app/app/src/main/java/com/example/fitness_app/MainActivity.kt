@@ -1,5 +1,6 @@
 package com.example.fitness_app
 
+import android.app.Application
 import android.content.Context
 import android.os.Bundle
 import com.google.android.material.bottomnavigation.BottomNavigationView
@@ -25,6 +26,9 @@ class MainActivity : AppCompatActivity() {
 
         val navView: BottomNavigationView = binding.navView
 
+        val prefs = Prefs(this)
+        prefs.saveIsLogin(true)
+
         val navController = findNavController(R.id.nav_host_fragment_activity_main)
         // Passing each menu ID as a set of Ids because each
         // menu should be considered as top level destinations.
@@ -39,4 +43,9 @@ class MainActivity : AppCompatActivity() {
 
 
     }
+
+    override fun onBackPressed() {
+        finishAffinity()
+    }
+
 }

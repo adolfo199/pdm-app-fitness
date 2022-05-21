@@ -7,21 +7,45 @@
         android:hardwareAccelerated="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
-        android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Fitness_app">
         <activity
-            android:name=".ui.ejercicios.EjercicioActivity"
-            android:parentActivityName=".MainActivity"
+            android:name=".ui.login.SigUpActivity"
+            android:parentActivityName=".ui.login.GetStartActivity"
+            android:theme="@style/Theme.Fitness_app2"
             android:exported="false" />
+        <activity
+            android:name=".ui.login.GetStartActivity"
+            android:exported="false" />
+        <activity
+            android:name=".SplashActivity"
+            android:exported="true"
+            android:theme="@style/splashTheme">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".ui.login.LoginActivity"
+            android:exported="true" />
+        <activity
+            android:name=".ui.recetas.CategoriasActivity"
+            android:exported="false"
+            android:theme="@style/ToolbarTheme" />
+        <activity
+            android:name=".ui.ejercicios.EjercicioActivity"
+            android:exported="false"
+            android:parentActivityName=".MainActivity" />
         <activity
             android:name=".ui.ejercicios.FinishActivity"
-            android:parentActivityName=".MainActivity"
-            android:exported="false" />
+            android:exported="false"
+            android:parentActivityName=".MainActivity" />
         <activity
             android:name=".ui.ejercicios.RutinaActivity"
-            android:parentActivityName=".MainActivity"
             android:exported="false"
+            android:parentActivityName=".MainActivity"
             android:theme="@style/ejercicicioNoacitionbar" />
         <activity
             android:name=".ui.recetas.RecetaActivity"
@@ -29,13 +53,7 @@
             android:parentActivityName=".MainActivity" />
         <activity
             android:name=".MainActivity"
-            android:exported="true">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
+            android:exported="true" />
     </application>
 
 </manifest>
