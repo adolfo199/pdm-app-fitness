@@ -33,7 +33,7 @@
                 android:textColor="@color/white"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/cantEjercicios2" />
+                app:layout_constraintTop_toBottomOf="@+id/nKcal" />
 
             <TextView
                 android:id="@+id/textView12"
@@ -45,7 +45,7 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.819"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/cantEjercicios3" />
+                app:layout_constraintTop_toBottomOf="@+id/nMinutos" />
 
             <androidx.cardview.widget.CardView
                 android:id="@+id/cardView2"
@@ -103,7 +103,7 @@
                 app:layout_constraintTop_toBottomOf="@+id/textView6" />
 
             <TextView
-                android:id="@+id/cantEjercicios2"
+                android:id="@+id/nKcal"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="36dp"
@@ -116,7 +116,7 @@
                 app:layout_constraintTop_toBottomOf="@+id/textView6" />
 
             <TextView
-                android:id="@+id/cantEjercicios3"
+                android:id="@+id/nMinutos"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="36dp"

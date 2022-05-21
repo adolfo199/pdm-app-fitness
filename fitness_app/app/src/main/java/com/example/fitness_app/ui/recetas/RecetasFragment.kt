@@ -1,19 +1,13 @@
 package com.example.fitness_app.ui.recetas
 
-import android.app.ActionBar
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.LinearLayout
-import android.widget.TextView
-import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
-import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.example.fitness_app.MainActivity
 import com.example.fitness_app.R
 import com.example.fitness_app.databinding.RecetasFragmentBinding
 import com.example.fitness_app.ui.recetas.Ingredientes.Companion.ingredientesEnsaladaDeHuevo
@@ -58,16 +52,16 @@ class RecetasFragment : Fragment() {
         var recetas = listOf<Recetas>(
             Recetas("Ensaladada de huevo y aguacate", R.drawable.ensaladadehuevo,
                 "45 min", "6", "240" , ingredientesEnsaladaDeHuevo,
-                instruccionesEnsalada, false),
+                instruccionesEnsalada, false,"Ensaladas"),
             Recetas("Yogurt con frutas", R.drawable.yogurt_con_frutas, "3 min",
-            "2","213", ingredientesYogurtConFrutas, instruccionesYogurtConFrutas, false),
+            "2","213", ingredientesYogurtConFrutas, instruccionesYogurtConFrutas, false,"Postres"),
             Recetas("Pancakes de Manzana", R.drawable.pancakes_de_manzana, "70 min",
-            "4","186", ingredientesPancakesDeMazana, instruccionesPancakesDeManzana, false),
+            "4","186", ingredientesPancakesDeMazana, instruccionesPancakesDeManzana, false,"Desayunos"),
             Recetas("Pollo al horno con patatas", R.drawable.pollo_al_horno_con_patatas,
             "70 min", "4","210", ingredientesPolloAlHornoConPatatas,
-            instruccionesPolloAlHornoConPatatas, false),
+            instruccionesPolloAlHornoConPatatas, false,"Carnes y aves"),
             Recetas("Lomito de res relleno", R.drawable.lomito_de_res, "55 min",
-            "4","386", ingredientesLomitoDeResRelleno , intruccionesLomitoDeResRelleno ,false)
+            "4","386", ingredientesLomitoDeResRelleno , intruccionesLomitoDeResRelleno ,false,"Carnes y aves")
         )
 
         val categorias : MutableList<Categorias> = ArrayList()

@@ -1,4 +1,12 @@
 package com.example.fitness_app.data.entities
 
-class ExercisesTypeEntity {
-}
+import androidx.room.Entity
+import androidx.room.PrimaryKey
+
+@Entity(tableName = "exercises_type")
+class ExercisesTypeEntity(
+    @PrimaryKey(autoGenerate = true)
+    val id:Int = 0,
+    val name:String,
+    val description:String
+)
