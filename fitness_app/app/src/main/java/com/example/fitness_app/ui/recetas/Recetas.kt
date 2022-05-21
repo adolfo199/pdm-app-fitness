@@ -9,5 +9,6 @@ data class Recetas(val nombre:String,
               val calorias:String,
               val ingredientes:List<String>,
               val instrucciones: List<String>,
-              var favorita:Boolean) : Serializable
+              var favorita:Boolean,
+              val categoria:String) : Serializable
 
