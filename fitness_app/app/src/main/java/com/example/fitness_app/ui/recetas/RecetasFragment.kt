@@ -1,19 +1,13 @@
 package com.example.fitness_app.ui.recetas
 
-import android.app.ActionBar
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.LinearLayout
-import android.widget.TextView
-import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
-import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.example.fitness_app.MainActivity
 import com.example.fitness_app.R
 import com.example.fitness_app.databinding.RecetasFragmentBinding
 import com.example.fitness_app.ui.recetas.Ingredientes.Companion.ingredientesEnsaladaDeHuevo

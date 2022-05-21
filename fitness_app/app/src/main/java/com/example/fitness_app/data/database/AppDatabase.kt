@@ -29,7 +29,7 @@ abstract class AppDatabase : RoomDatabase() {
     abstract fun ingredients(): IngredientsDao
     abstract fun meals():MealsDao
     abstract fun mealsType():MealTypeDao
-    abstract fun Preferens(): PreferensDao
+    abstract fun preferens(): PreferensDao
     abstract fun recipes():RecipesDao
     abstract fun routineCategory():RoutineCategoryDao
     abstract fun routine():RoutineDao

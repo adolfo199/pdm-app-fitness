@@ -12,7 +12,7 @@
         android:layout_height="wrap_content"
         android:text="Paso"
         android:layout_marginStart="16dp"
-        android:buttonTint="@color/purple_500"
+        android:buttonTint="@color/verde"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"/>
 
@@ -38,10 +38,10 @@
 
         <androidx.cardview.widget.CardView
             android:id="@+id/cardView"
-            android:background="@color/purple_500"
+            android:background="@color/verde"
             android:layout_width="5dp"
             android:layout_height="match_parent"
-            app:cardBackgroundColor="@color/purple_500"/>
+            app:cardBackgroundColor="@color/verde"/>
 
         <TextView
             android:id="@+id/textInstrucciones"

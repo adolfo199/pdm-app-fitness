@@ -71,10 +71,10 @@ class Rutinas {
 
 
         val rutinas = listOf<Rutina>(
-            Rutina("Abdominales", R.drawable.abdominales1, abdominales,250,20),
+            Rutina("Abdominales", R.drawable.abdominales1, abdominales,150,6),
             Rutina("Pecho", R.drawable.pecho, pecho,250,20),
-            Rutina("Brazos", R.drawable.brazo, brazos,250,20),
-            Rutina("Piernas", R.drawable.piernas, piernas,250,20),
+            Rutina("Brazos", R.drawable.brazo, brazos,350,20),
+            Rutina("Piernas", R.drawable.piernas, piernas,450,20),
         )
     }
 }

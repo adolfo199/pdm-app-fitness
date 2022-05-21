@@ -9,14 +9,14 @@ interface UserProfileDao {
     @Query("SELECT * FROM user_Profile")
     fun getAll(): LiveData<List<UserProfileEntity>>
 
-    @Query("SELECT * FROM user_Profile WHERE id = :id" )
+    @Query("SELECT * FROM user_Profile WHERE user_id = :id" )
     fun get(id:Int): LiveData<UserProfileEntity>
 
     @Insert
-    fun insertAll(vararg preferens: UserProfileEntity)
+    fun insertAll(vararg userProfile: UserProfileEntity)
 
-    @Update
-    fun update(userProfile: UserProfileEntity)
+    @Query("UPDATE user_Profile SET timeExercise = :minute, countExercise = :canEj, kcal = :kcal WHERE user_id=:id ")
+    fun update(minute:Int, kcal:Int, canEj:Int, id: Int)
 
     @Delete
     fun delete(userProfile: UserProfileEntity)

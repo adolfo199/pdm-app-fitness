@@ -23,7 +23,7 @@ class EjercicioActivity : AppCompatActivity(), TextToSpeech.OnInitListener {
     private var restProgress = 0// progress counts from 0 to 10
 
     //TO DO: change the restTimerDuration from 2 to 10 seconds after testing
-    private var restTimerDuration: Long = 10
+    private var restTimerDuration: Long = 11
 
     //variable for exercise timer
     private var exerciseTimer: CountDownTimer?=null
@@ -31,7 +31,7 @@ class EjercicioActivity : AppCompatActivity(), TextToSpeech.OnInitListener {
 
 
     //TO DO: change the exerciseTimerDuration from 2 to 30 seconds after testing
-    private var exerciseTimerDuration : Long = 30
+    private var exerciseTimerDuration : Long = 31
     private var exerciseList: List<Ejercicio>?=null
     private var currentExercisePosition = -1
 
@@ -98,6 +98,11 @@ class EjercicioActivity : AppCompatActivity(), TextToSpeech.OnInitListener {
         }
         //resetting the timer
         super.onDestroy()
+    }
+
+    override fun onBackPressed() {
+        //super.onBackPressed()
+        customDialogForBackButton()
     }
 
     //This fun is for setting the rest timer for the user to get ready for upcoming exercise
