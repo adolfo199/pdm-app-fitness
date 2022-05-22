@@ -38,7 +38,7 @@ abstract class AppDatabase : RoomDatabase() {
     abstract fun userProfile():UserProfileDao
 
 
-    //patron singledon
+    //patron singleton
     companion object {
         @Volatile
         private var INSTANCE: AppDatabase? = null

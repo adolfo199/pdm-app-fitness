@@ -1,5 +1,6 @@
 package com.example.fitness_app.ui.profile
 
+import android.annotation.SuppressLint
 import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -26,6 +27,7 @@ class ProfileFragment : Fragment() {
     private lateinit var userLiveData:LiveData<UserEntity>
     private lateinit var user:UserEntity
 
+    @SuppressLint("SetTextI18n")
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,

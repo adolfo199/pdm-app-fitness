@@ -82,6 +82,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="4dp"
         android:layout_marginBottom="8dp"
+        android:visibility="gone"
         android:text="Email o contraseña invalido"
         android:textColor="#FF0000"
         app:layout_constraintBottom_toTopOf="@+id/btnInicioSesion"

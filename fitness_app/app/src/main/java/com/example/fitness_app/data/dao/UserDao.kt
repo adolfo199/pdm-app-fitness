@@ -11,8 +11,8 @@ import com.example.fitness_app.data.entities.UserEntity
 @Dao
 interface UserDao {
 
-    @Query("SELECT EXISTS (SELECT * FROM user WHERE email = :email AND password = :password)")
-    fun LoginUser(email: String, password: String):Boolean
+    @Query("SELECT * FROM user WHERE email = :email AND password = :password")
+   fun LoginUser(email: String, password: String):LiveData<UserEntity>
 
     @Query("SELECT id FROM user WHERE email = :email AND password = :password")
     fun getId(email: String, password: String):Int
