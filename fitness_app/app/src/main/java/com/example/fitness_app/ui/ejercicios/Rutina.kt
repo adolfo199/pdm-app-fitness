@@ -1,11 +1,11 @@
 package com.example.fitness_app.ui.ejercicios
 
+import com.google.gson.annotations.SerializedName
 import java.io.Serializable
 
 class Rutina(
-    val name:String,
-    val image:Int,
-    val ejercicios:List<Ejercicio>,
-    val calorias:Int,
-    val duracion:Int,
-              ) : Serializable
+    @SerializedName("nombre") val name:String,
+    @SerializedName("image") val image:String,
+    @SerializedName("ejercicios") val ejercicios:List<Ejercicio>,
+    @SerializedName("calorias") val calorias:Int,
+    @SerializedName("duracion") val duracion:Int ) : Serializable

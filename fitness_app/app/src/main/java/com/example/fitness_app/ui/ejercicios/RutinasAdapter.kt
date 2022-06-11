@@ -1,48 +1,47 @@
 package com.example.fitness_app.ui.ejercicios
 
-import android.content.Context
 import android.content.Intent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
-import androidx.core.content.ContextCompat
 import androidx.core.content.ContextCompat.startActivity
 import androidx.recyclerview.widget.RecyclerView
 import com.example.fitness_app.R
+import com.squareup.picasso.Picasso
 
-class RutinasAdapter(private val context: Context, private val rutinas:List<Rutina>) :
+class RutinasAdapter :
     RecyclerView.Adapter<RutinasAdapter.RutinasViewHolder>() {
 
-    class RutinasViewHolder(itemView: View): RecyclerView.ViewHolder(itemView){
-        var imageRutinas: ImageView? = null
-        var nameRutina:TextView? = null
+    private var myRutinas = emptyList<Rutina>()
 
-        init {
-            imageRutinas = itemView.findViewById(R.id.imageRutina)
-            nameRutina = itemView.findViewById(R.id.nombreRutina)
-
-        }
+    inner class RutinasViewHolder(itemView: View): RecyclerView.ViewHolder(itemView){
+        val imageRutinas:ImageView = itemView.findViewById(R.id.imageRutina)
+        val nameRutina:TextView = itemView.findViewById(R.id.nombreRutina)
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RutinasViewHolder {
-        return RutinasViewHolder(LayoutInflater.from(context).inflate(R.layout.item_rutinas, parent, false))
+        return RutinasViewHolder(LayoutInflater.from(parent.context).inflate(R.layout.item_rutinas, parent, false))
     }
 
     override fun onBindViewHolder(holder: RutinasViewHolder, position: Int) {
-        holder.nameRutina!!.text = rutinas[position].name
-        holder.imageRutinas!!.setImageResource(rutinas[position].image)
+        holder.nameRutina.text = myRutinas[position].name
+        Picasso.get().load(myRutinas[position].image).into(holder.imageRutinas)
 
-        holder.imageRutinas!!.setOnClickListener {
-            val intent = Intent(context, RutinaActivity::class.java)
-            intent.putExtra("ejercicios", rutinas[position])
-            startActivity(context, intent, null)
+        holder.imageRutinas.setOnClickListener {
+            val intent = Intent(holder.imageRutinas.context, RutinaActivity::class.java)
+            intent.putExtra("ejercicios", myRutinas[position])
+            startActivity(holder.imageRutinas.context, intent, null)
         }
 
     }
 
     override fun getItemCount(): Int {
-        return  rutinas.size
+        return  myRutinas.size
+    }
+    fun setData(newList: List<Rutina>){
+        myRutinas = newList
+        notifyDataSetChanged()
     }
 }

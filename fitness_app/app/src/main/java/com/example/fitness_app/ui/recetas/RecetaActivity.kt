@@ -1,11 +1,11 @@
 package com.example.fitness_app.ui.recetas
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.example.fitness_app.R
 import com.example.fitness_app.databinding.ActivityRecetaBinding
+import com.squareup.picasso.Picasso
 
 class RecetaActivity : AppCompatActivity() {
 
@@ -25,10 +25,10 @@ class RecetaActivity : AppCompatActivity() {
 
         val receta = intent.getSerializableExtra("receta") as Recetas
 
-        binding.imageRecetas.setImageResource(receta.image)
+        Picasso.get().load(receta.image).into(binding.imageRecetas)
         binding.toolTitle.title = receta.nombre
         binding.temPreparacion.text = receta.temPreparacion
-        binding.cantPorciones.text = receta.porcionces
+        binding.cantPorciones.text = receta.porciones
         binding.cantCalorias.text = receta.calorias
 
         setIngredientes(receta.ingredientes)

@@ -3,12 +3,11 @@ package com.example.fitness_app.ui.recetas
 import java.io.Serializable
 
 data class Recetas(val nombre:String,
-              val image:Int,
+              val image:String,
               val temPreparacion:String,
-              val porcionces:String,
+              val porciones:String,
               val calorias:String,
               val ingredientes:List<String>,
               val instrucciones: List<String>,
-              var favorita:Boolean,
               val categoria:String) : Serializable
 

@@ -1,13 +1,13 @@
 package com.example.fitness_app.ui.ejercicios
 
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.example.fitness_app.R
 import com.example.fitness_app.databinding.ActivityRutinaBinding
+import com.squareup.picasso.Picasso
 
 class RutinaActivity : AppCompatActivity() {
     private lateinit var binding: ActivityRutinaBinding
@@ -25,7 +25,7 @@ class RutinaActivity : AppCompatActivity() {
 
         val ejercicios = intent.getSerializableExtra("ejercicios") as Rutina
 
-        binding.imageRutinas.setImageResource(ejercicios.image)
+        Picasso.get().load(ejercicios.image).into(binding.imageRutinas)
         binding.toolTitle2.title = ejercicios.name
         binding.minEjercicios.text = (ejercicios.duracion.toString()+" min · "+(ejercicios.ejercicios.size).toString()+ " ejercicios")
 

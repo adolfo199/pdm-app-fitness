@@ -3,7 +3,6 @@ package com.example.fitness_app.ui.ejercicios
 import android.app.Dialog
 import android.content.Intent
 import android.media.MediaPlayer
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.CountDownTimer
 import android.speech.tts.TextToSpeech
@@ -11,23 +10,23 @@ import android.util.Log
 import android.view.View
 import android.widget.Button
 import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.fitness_app.R
 import com.example.fitness_app.databinding.ActivityEjercicioBinding
 import java.util.*
-import kotlin.collections.ArrayList
 
 class EjercicioActivity : AppCompatActivity(), TextToSpeech.OnInitListener {
     //variable for rest timer
     private var restTimer: CountDownTimer?=null
     private var restProgress = 0// progress counts from 0 to 10
 
-    //TO DO: change the restTimerDuration from 2 to 10 seconds after testing
+    //TO DO: change the restTimerDuration from 2 to 11 seconds after testing
     private var restTimerDuration: Long = 11
 
     //variable for exercise timer
     private var exerciseTimer: CountDownTimer?=null
-    private var exerciseProgress = 0// progress from 0 to 30
+    private var exerciseProgress = 0// progress from 0 to 31
 
 
     //TO DO: change the exerciseTimerDuration from 2 to 30 seconds after testing
@@ -201,9 +200,18 @@ class EjercicioActivity : AppCompatActivity(), TextToSpeech.OnInitListener {
             restProgress = 0
         }
 
-        binding.tvUpcomingExerciseName.text = exerciseList!![currentExercisePosition + 1].nombre
-        speakOut("tómate un descanso, el siguiente 30 segundos,   "+exerciseList!![currentExercisePosition + 1].nombre)
-        setRestProgressBar()
+
+
+        if ((currentExercisePosition+1)==0){
+            binding.tvUpcomingExerciseName.text = exerciseList!![currentExercisePosition + 1].nombre
+            speakOut("Preparados, el siguiente 30 segundos,   "+exerciseList!![currentExercisePosition + 1].nombre)
+            setRestProgressBar()
+        }else{
+            binding.tvUpcomingExerciseName.text = exerciseList!![currentExercisePosition + 1].nombre
+            binding.txtitlejem.text = "Descanso"
+            speakOut("tómate un descanso, el siguiente 30 segundos,   "+exerciseList!![currentExercisePosition + 1].nombre)
+            setRestProgressBar()
+        }
     }
 
     //setting the exercise screen
@@ -231,7 +239,7 @@ class EjercicioActivity : AppCompatActivity(), TextToSpeech.OnInitListener {
         setExerciseProgressBar()
 
         //setting the exercise images and exercise name
-        binding.ivImage.setAnimation(exerciseList!![currentExercisePosition].anima)
+        binding.ivImage.setAnimationFromUrl(exerciseList!![currentExercisePosition].anima)
         binding.ivImage.playAnimation()
         binding.tvExerciseName.text = exerciseList!![currentExercisePosition].nombre
     }

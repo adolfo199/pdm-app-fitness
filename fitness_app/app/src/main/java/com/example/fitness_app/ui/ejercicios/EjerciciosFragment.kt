@@ -1,30 +1,35 @@
 package com.example.fitness_app.ui.ejercicios
 
-import androidx.lifecycle.ViewModelProvider
+import android.content.Context
+import android.net.ConnectivityManager
+import android.net.NetworkCapabilities
 import android.os.Bundle
-import androidx.fragment.app.Fragment
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
+import android.view.View.GONE
+import android.view.View.VISIBLE
 import android.view.ViewGroup
-import androidx.lifecycle.LifecycleOwner
+import android.widget.Toast
+import androidx.fragment.app.Fragment
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.Observer
+import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
 import com.example.fitness_app.Prefs
-import com.example.fitness_app.R
+import com.example.fitness_app.data.API.RutinasRepository
 import com.example.fitness_app.data.database.AppDatabase
 import com.example.fitness_app.data.entities.UserProfileEntity
 import com.example.fitness_app.databinding.EjerciciosFragmentBinding
-import com.example.fitness_app.databinding.RecetasFragmentBinding
 
 class EjerciciosFragment : Fragment() {
 
     private var _binding: EjerciciosFragmentBinding? = null
     private val binding get() = _binding!!
 
-    private lateinit var recyclerView:RecyclerView
-    private lateinit var adapter: RutinasAdapter
+    private lateinit var viewModel: EjerciciosViewModel
+    private val myAdapter by lazy { RutinasAdapter() }
+
 
     private lateinit var userProfiliveData: LiveData<UserProfileEntity>
     private lateinit var userData:UserProfileEntity
@@ -36,11 +41,36 @@ class EjerciciosFragment : Fragment() {
         _binding = EjerciciosFragmentBinding.inflate(inflater, container , false)
         val root: View = binding.root
 
+        if (isConnected(binding.recyclerRutinas.context)){
+            setupRecyclerview()
+            val repository = RutinasRepository()
+            val viewModelFactory = EjerciciosViewModelFactory(repository)
+            viewModel = ViewModelProvider(this, viewModelFactory).get(EjerciciosViewModel::class.java)
+            viewModel.getRutinas()
+            viewModel.myResponse.observe(viewLifecycleOwner, Observer { response ->
+                if (response.isSuccessful){
+                    response.body()?.let { myAdapter.setData(it) }
+                    binding.recyclerRutinas.visibility = VISIBLE
+                    binding.shimmerRutinas.visibility = GONE
+                }
+                else{
+                    Toast.makeText(binding.recyclerRutinas.context, "Algo salio mal", Toast.LENGTH_SHORT).show()
+                }
+            } )
+        }
+        else{
+            Toast.makeText(binding.recyclerRutinas.context, "No tienes conexion a internet",Toast.LENGTH_LONG).show()
+        }
 
 
-        setRutinas(Rutinas.rutinas)
+
 
         return root
+    }
+
+    private fun setupRecyclerview() {
+        binding.recyclerRutinas.adapter = myAdapter
+        binding.recyclerRutinas.layoutManager = LinearLayoutManager(binding.recyclerRutinas.context)
     }
 
     override fun onStart() {
@@ -48,10 +78,6 @@ class EjerciciosFragment : Fragment() {
         data()
     }
 
-    override fun onResume() {
-        super.onResume()
-        //data()
-    }
 
 
 
@@ -76,15 +102,26 @@ class EjerciciosFragment : Fragment() {
             binding.nMinutos.text = "0"
         }
     }
-
-
-
-    private fun setRutinas(rutinas: List<Rutina>){
-        recyclerView = binding.recyclerRutinas
-        val layoutManager : RecyclerView.LayoutManager = LinearLayoutManager(binding.recyclerRutinas.context)
-        recyclerView.layoutManager = layoutManager
-        adapter = RutinasAdapter(binding.recyclerRutinas.context, rutinas)
-        recyclerView.adapter = adapter
+    fun isConnected(context: Context): Boolean {
+        val connectivityManager =
+            context.getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager
+        if (connectivityManager != null) {
+            val capabilities =
+                connectivityManager.getNetworkCapabilities(connectivityManager.activeNetwork)
+            if (capabilities != null) {
+                if (capabilities.hasTransport(NetworkCapabilities.TRANSPORT_CELLULAR)) {
+                    Log.i("Internet", "NetworkCapabilities.TRANSPORT_CELLULAR")
+                    return true
+                } else if (capabilities.hasTransport(NetworkCapabilities.TRANSPORT_WIFI)) {
+                    Log.i("Internet", "NetworkCapabilities.TRANSPORT_WIFI")
+                    return true
+                } else if (capabilities.hasTransport(NetworkCapabilities.TRANSPORT_ETHERNET)) {
+                    Log.i("Internet", "NetworkCapabilities.TRANSPORT_ETHERNET")
+                    return true
+                }
+            }
+        }
+        return false
     }
 
 
