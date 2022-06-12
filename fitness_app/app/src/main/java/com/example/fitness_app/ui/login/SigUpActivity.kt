@@ -1,17 +1,22 @@
 package com.example.fitness_app.ui.login
 
+import android.app.Activity
 import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import com.example.fitness_app.data.database.AppDatabase
 import com.example.fitness_app.data.entities.UserEntity
 import com.example.fitness_app.databinding.ActivitySigUpBinding
+import com.example.fitness_app.ui.profile.ImageController
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
 private lateinit var binding: ActivitySigUpBinding
 class SigUpActivity : AppCompatActivity() {
+    private val SELECT_ACTIVITY = 50
+    private var imageUri:Uri? = null
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivitySigUpBinding.inflate(layoutInflater)
@@ -37,7 +42,11 @@ class SigUpActivity : AppCompatActivity() {
                 val user = UserEntity(email,pass,nombre, apellido)
 
                 CoroutineScope(Dispatchers.IO).launch {
-                    database.user().insertAll(user)
+                 val id =  database.user().insertAll(user)[0]
+
+                    imageUri?.let {
+                        ImageController.saveImage(this@SigUpActivity, id, it)
+                    }
 
                     startActivity(Intent(this@SigUpActivity, LoginActivity::class.java))
                     this@SigUpActivity.finish()
@@ -46,8 +55,21 @@ class SigUpActivity : AppCompatActivity() {
 
 
         }
+        binding.imageView9.setOnClickListener {
+            ImageController.selectPhotoFromGallery(this, SELECT_ACTIVITY)
+        }
 
 
 
+    }
+
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+        when{
+            requestCode == SELECT_ACTIVITY && resultCode == Activity.RESULT_OK  ->{
+                imageUri = data!!.data
+                binding.imageView9.setImageURI(imageUri)
+            }
+        }
     }
 }

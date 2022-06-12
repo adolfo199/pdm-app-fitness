@@ -19,7 +19,7 @@ interface UserDao {
     fun get(id:Int): LiveData<UserEntity>
 
     @Insert
-    fun insertAll(vararg user: UserEntity)
+    fun insertAll(vararg user: UserEntity):List<Long>
 
     @Query("SELECT * FROM user")
     fun getAll(): LiveData<List<UserEntity>>

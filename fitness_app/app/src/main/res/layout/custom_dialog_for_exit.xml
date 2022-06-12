@@ -40,7 +40,7 @@
                 android:background="#160fdd"
                 android:gravity="center"
                 android:padding="8dp"
-                android:text="YES"
+                android:text="si"
                 android:textColor="#FFFFFF"
                 android:textSize="16sp"/>
 

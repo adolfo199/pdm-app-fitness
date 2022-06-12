@@ -25,7 +25,7 @@ object ImageController {
         val file = File(context.filesDir, id.toString())
 
         return if (file.exists()) Uri.fromFile(file)
-        else Uri.parse("android.resource://com.example.fitness_app/drawable/placeholder")
+        else Uri.parse("android.resource://com.example.fitness_app/drawable/iconsuser")
     }
 
     fun deleteImage(context: Context, id: Long) {

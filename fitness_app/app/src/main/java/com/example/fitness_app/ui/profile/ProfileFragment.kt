@@ -1,7 +1,9 @@
 package com.example.fitness_app.ui.profile
 
 import android.annotation.SuppressLint
+import android.app.Activity
 import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -26,6 +28,9 @@ class ProfileFragment : Fragment() {
 
     private lateinit var userLiveData:LiveData<UserEntity>
     private lateinit var user:UserEntity
+    private val SELECT_ACTIVITY = 50
+    private var imageUri:Uri? = null
+    private var id:Int? = null
 
     @SuppressLint("SetTextI18n")
     override fun onCreateView(
@@ -45,8 +50,13 @@ class ProfileFragment : Fragment() {
               user = it
             binding.txtNombre.text = user.name+" "+user.surname
         })
+        id = prefs.getID()
+        val imageUri = ImageController.getImageUri(binding.btnCerrarSesion.context, prefs.getID().toLong())
+        binding.imageView5.setImageURI(imageUri)
+        binding.btnEdit.setOnClickListener {
+            getActivity()?.let { it1 -> ImageController.selectPhotoFromGallery(it1,SELECT_ACTIVITY) }
 
-
+        }
         binding.btnCerrarSesion.setOnClickListener {
 
             prefs.saveIsLogin(false)
@@ -60,6 +70,19 @@ class ProfileFragment : Fragment() {
         }
 
         return root
+    }
+
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+        when{
+            requestCode == SELECT_ACTIVITY && resultCode == Activity.RESULT_OK  ->{
+                imageUri = data!!.data
+                binding.imageView5.setImageURI(imageUri)
+                imageUri?.let {
+                    ImageController.saveImage(binding.txtNombre.context, id!!.toLong(), it)
+                }
+            }
+        }
     }
 
 }
