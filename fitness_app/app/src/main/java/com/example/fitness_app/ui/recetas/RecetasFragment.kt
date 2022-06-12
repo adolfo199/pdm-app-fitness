@@ -3,6 +3,8 @@ package com.example.fitness_app.ui.recetas
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
+import android.view.View.GONE
+import android.view.View.VISIBLE
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.Fragment
@@ -23,6 +25,7 @@ class RecetasFragment : Fragment() {
     private var recyclerViewCategoriasAdapter : RecyclerViewCategoriasAdapter? = null
 
     private val myAdapter by lazy { RecetasAdapter() }
+    private val AdapterRecientes by lazy { RecetasRecientesAdapter() }
 
 
 
@@ -36,6 +39,7 @@ class RecetasFragment : Fragment() {
         _binding = RecetasFragmentBinding.inflate(inflater, container, false)
         val root: View = binding.root
         setupRecyclerview()
+        setupRecyclerviewRecientes()
         val repository = RecetasRepository()
         val viewModelFactory = RecetasViewModelFactory(repository)
         viewModel = ViewModelProvider(this, viewModelFactory).get(RecetasViewModel::class.java)
@@ -43,7 +47,9 @@ class RecetasFragment : Fragment() {
         viewModel.myResponse.observe(viewLifecycleOwner, Observer { response ->
             if (response.isSuccessful){
                 response.body()?.let { myAdapter.setData(it) }
-
+                response.body()?.let { AdapterRecientes.setData(it) }
+                binding.containerRecetas.visibility = VISIBLE
+                binding.shimmerRecetas.visibility = GONE
             }
             else{
                 Toast.makeText(binding.recyclerViewRecetas.context, "Algo salio mal", Toast.LENGTH_SHORT).show()
@@ -53,12 +59,12 @@ class RecetasFragment : Fragment() {
 
 
         val categorias : MutableList<Categorias> = ArrayList()
-        categorias.add(Categorias("Ensaladas", R.drawable.ensaladadehuevo))
+        categorias.add(Categorias("Ensaladas", R.drawable.ensaladas))
         categorias.add(Categorias("Vegetarianas", R.drawable.lasana_vegetariana))
-        categorias.add(Categorias("Postres", R.drawable.postre_tarta))
-        categorias.add(Categorias("Carnes y aves", R.drawable.pollo_glaseado))
-        categorias.add(Categorias("Mariscos", R.drawable.ensalada_camarones))
-        categorias.add(Categorias("Desayunos", R.drawable.fritata_desayuno))
+        categorias.add(Categorias("Postres", R.drawable.postres))
+        categorias.add(Categorias("Carnes y aves", R.drawable.carnes))
+        categorias.add(Categorias("Mariscos", R.drawable.mariscos))
+        categorias.add(Categorias("Desayunos", R.drawable.desayunos))
 
         setCategorias(categorias)
 
@@ -76,6 +82,11 @@ class RecetasFragment : Fragment() {
     private fun setupRecyclerview() {
         binding.recyclerViewRecetas.adapter = myAdapter
         binding.recyclerViewRecetas.layoutManager = LinearLayoutManager(binding.recyclerViewRecetas.context,RecyclerView.HORIZONTAL, false)
+    }
+
+    private fun setupRecyclerviewRecientes() {
+        binding.RecyclerViewFavoritas.adapter = AdapterRecientes
+        binding.RecyclerViewFavoritas.layoutManager = LinearLayoutManager(binding.recyclerViewRecetas.context)
     }
 
     private fun setCategorias(categorias: List<Categorias>){

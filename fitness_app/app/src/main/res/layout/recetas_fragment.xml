@@ -6,9 +6,8 @@
     android:layout_height="match_parent"
     tools:context=".ui.recetas.RecetasFragment">
 
-  <!--  <com.facebook.shimmer.ShimmerFrameLayout
+    <com.facebook.shimmer.ShimmerFrameLayout
         android:id="@+id/shimmer_recetas"
-        android:visibility="gone"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         app:layout_constraintTop_toTopOf="parent"
@@ -24,7 +23,7 @@
             <include layout="@layout/item_recetas_isloading"/>
         </androidx.appcompat.widget.LinearLayoutCompat>
 
-    </com.facebook.shimmer.ShimmerFrameLayout> -->
+    </com.facebook.shimmer.ShimmerFrameLayout>
 
   <!--  <ProgressBar
         android:id="@+id/progresbar"
@@ -39,6 +38,7 @@
         android:id="@+id/container_recetas"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:visibility="gone"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
@@ -106,7 +106,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="16dp"
                 android:layout_marginTop="50dp"
-                android:text="Recetas favoritas"
+                android:text="Recetas recientes"
                 android:textSize="16sp"
                 android:textStyle="bold"
                 app:layout_constraintStart_toStartOf="parent"
@@ -117,6 +117,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_marginTop="16dp"
+                android:layout_marginBottom="64dp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
