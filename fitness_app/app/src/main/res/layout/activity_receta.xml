@@ -23,7 +23,6 @@
                 android:id="@+id/imageRecetas"
                 android:layout_width="match_parent"
                 android:layout_height="280dp"
-                android:src="@drawable/ensaladadehuevo"
                 android:scaleType="centerCrop"
                 app:layout_collapseMode="parallax" />
 

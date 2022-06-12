@@ -4,8 +4,6 @@ import androidx.lifecycle.LiveData
 import androidx.room.Dao
 import androidx.room.Insert
 import androidx.room.Query
-import com.example.fitness_app.data.entities.ExercisesEntity
-import com.example.fitness_app.data.entities.RoutineEntity
 import com.example.fitness_app.data.entities.UserEntity
 
 @Dao
